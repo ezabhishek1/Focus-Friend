@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: focus-friend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ENABLE_FALLBACK_ENGINE
+        value: "true"
+      - key: ENABLE_CORS
+        value: "true"
