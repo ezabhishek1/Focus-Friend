@@ -1,0 +1,26 @@
+/* ==========================================================================
+   FOCUS FRIEND — CSS RESET & BASE TYPOGRAPHY
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+  background-image: radial-gradient(#d4cebe 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+[data-theme="dark"] body {
+  background-image: radial-gradient(#27282F 1px, transparent 1px);
+}

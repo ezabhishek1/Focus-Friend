@@ -1,0 +1,3 @@
+"""
+Focus Friend - Middleware Package.
+"""

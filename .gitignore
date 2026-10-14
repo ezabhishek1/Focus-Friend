@@ -1,0 +1,62 @@
+# ==============================================================================
+# Focus Friend - Git Ignore Rules
+# ==============================================================================
+
+# Environment & Secrets (Zero Cloud Leakage)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Python Bytecode & Optimization Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.nox/
+.tox/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Streamlit Local Cache
+.streamlit/
+
+# OS-Specific Metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE & Editor Configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.agents/
+
+# Scratch & Temporary Logs
+*.log
+scratch/

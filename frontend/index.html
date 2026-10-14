@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCUS FRIEND — Local-First Executive Function Assistant</title>
+  <meta name="description" content="A minimalist, local-first executive function assistant that turns walls of text into Tone, Timeline, and Task. Zero cloud latency, 100% privacy, built for ADHD and neurodivergent professionals.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Modular Neo-Brutalist Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body data-theme="light">
+  <!-- Top Marquee Ticker -->
+  <aside class="ticker-wrap" aria-label="Privacy notice ticker">
+    <div class="ticker">
+      <span class="ticker-item">🔒 100% LOCAL-FIRST INFERENCE</span>
+      <span class="ticker-item">⚡ ZERO BYTES LEAVE YOUR MACHINE</span>
+      <span class="ticker-item">🧠 BUILT FOR ADHD &amp; TASK PARALYSIS</span>
+      <span class="ticker-item">🏆 HACKTOBERFEST "BUILD FOR A FRIEND" CHALLENGE</span>
+      <span class="ticker-item">🤖 POWERED BY PHI-3 &amp; OLLAMA</span>
+      <span class="ticker-item">🔒 100% LOCAL-FIRST INFERENCE</span>
+      <span class="ticker-item">⚡ ZERO BYTES LEAVE YOUR MACHINE</span>
+      <span class="ticker-item">🧠 BUILT FOR ADHD &amp; TASK PARALYSIS</span>
+    </div>
+  </aside>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-badge">
+          <div class="brand-icon">⚡</div>
+          <div class="brand-text">
+            <h1 class="brand-title">FOCUS FRIEND</h1>
+            <span class="brand-tag">v1.0 // LOCAL-FIRST EXECUTIVE COMPANION</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="status-pill" id="ollama-status-pill" title="Local Ollama Inference Engine Status">
+          <span class="status-dot pulse-dot" id="status-dot"></span>
+          <span class="status-text" id="status-text">CONNECTING OLLAMA...</span>
+          <button class="status-refresh-btn" id="btn-refresh-status" title="Refresh local status" aria-label="Refresh status">⟳</button>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button class="neo-btn neo-btn-sm" id="btn-toggle-sound" aria-label="Toggle Sound Effects" title="Toggle Calm Audio Feedback">
+          <span id="sound-icon">🔊</span> <span id="sound-text">SFX: ON</span>
+        </button>
+        <button class="neo-btn neo-btn-sm" id="btn-toggle-theme" aria-label="Toggle Theme" title="Toggle Light / Dark Mode">
+          <span id="theme-icon">🌙</span> <span id="theme-text">DARK</span>
+        </button>
+        <button class="neo-btn neo-btn-sm neo-btn-accent" id="btn-open-manifesto" title="Read PRD &amp; Open Source Architecture">
+          📖 MANIFESTO
+        </button>
+      </div>
+    </header>
+
+    <!-- Subheader Persona Callout -->
+    <section class="persona-banner">
+      <div class="persona-sticker">FOR ALEX</div>
+      <p class="persona-quote">
+        <strong>The Anti-Paralysis Protocol:</strong> Paste your overwhelming wall of text (email, Slack dump, Discord ping). Focus Friend cuts the noise down to three essentials: <strong>The Vibe</strong>, <strong>The Deadline</strong>, and <strong>The Action Item</strong>.
+      </p>
+    </section>
+
+    <!-- Preset Scenarios (ADHD Quick Triggers) -->
+    <section class="presets-section" aria-label="Overwhelm Presets">
+      <span class="presets-label">⚡ OVERWHELM PRESETS:</span>
+      <div class="presets-buttons" id="presets-buttons" role="group" aria-label="Quick preset scenarios">
+        <!-- Rendered dynamically by PresetsComponent -->
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="main-layout">
+      <!-- Input Panel -->
+      <section class="neo-card input-card" id="input-card">
+        <div class="card-header-bar">
+          <div class="window-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="window-title">INPUT_BUFFER // RAW_WALL_OF_TEXT</span>
+          <div class="privacy-tag">🔒 ZERO CLOUD LEAK</div>
+        </div>
+
+        <div class="textarea-wrapper">
+          <textarea
+            id="text-input"
+            class="neo-textarea"
+            placeholder="Paste confusing 4-paragraph email, chaotic Slack thread, or panic notification here...&#10;&#10;Hit Ctrl + Enter (or Cmd + Enter) to Extract Signal."
+            spellcheck="false"
+            aria-label="Raw text input buffer"
+          ></textarea>
+        </div>
+
+        <!-- Input Footer Controls -->
+        <div class="input-footer">
+          <div class="input-stats">
+            <span id="stat-words">0 words</span>
+            <span class="stat-divider">·</span>
+            <span id="stat-chars">0 chars</span>
+            <span class="stat-divider">·</span>
+            <span id="stat-time-saved" class="stat-highlight">0 min reading time</span>
+          </div>
+
+          <div class="input-actions">
+            <button class="neo-btn neo-btn-ghost" id="btn-clear" title="Clear text (Esc)">
+              ✕ CLEAR
+            </button>
+            <button class="neo-btn neo-btn-primary" id="btn-extract">
+              <span class="btn-icon">⚡</span>
+              <span class="btn-label">EXTRACT SIGNAL</span>
+              <kbd class="btn-kbd">Ctrl+↵</kbd>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Processing State (Calm, Non-Erratic) -->
+      <section class="calm-loader-container" id="loader-container" style="display: none;" aria-live="polite">
+        <div class="calm-loader-card">
+          <div class="calm-pulse-bar">
+            <div class="calm-pulse-fill"></div>
+          </div>
+          <div class="loader-content">
+            <span class="loader-tag">CALM_INFERENCE_IN_PROGRESS</span>
+            <h3 class="loader-status" id="loader-status-text">Filtering social fluff &amp; cognitive noise...</h3>
+            <p class="loader-subtext">Running locally via Phi-3 on Ollama • No cloud packets sent</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Output Section: The 3 Signal Cards -->
+      <section class="output-section" id="output-section" style="display: none;" aria-live="polite">
+        <div class="output-bar">
+          <div class="output-bar-left">
+            <span class="output-pill">DISTILLED SIGNAL</span>
+            <span class="output-meta" id="output-meta">Generated in 0.1s · 3 Core Points</span>
+          </div>
+          <div class="output-bar-right">
+            <button class="neo-btn neo-btn-sm" id="btn-copy-all" title="Copy full Signal summary to clipboard">
+              📋 COPY FULL SIGNAL
+            </button>
+            <button class="neo-btn neo-btn-sm neo-btn-danger" id="btn-reset" title="Process another message">
+              🔄 NEW TEXT
+            </button>
+          </div>
+        </div>
+
+        <div class="signal-cards-grid">
+          <!-- Card 1: THE VIBE -->
+          <article class="signal-card signal-card-vibe">
+            <div class="card-top">
+              <span class="card-num-tag">01 // EMOTIONAL CONTEXT</span>
+              <span class="card-badge badge-vibe" id="badge-vibe">THE VIBE</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Emotional Temperature &amp; Intent</h3>
+              <p class="card-distilled-text" id="text-vibe">
+                "Collaborative request for feedback; friendly tone with low urgency."
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span class="card-tip">💡 Helps prevent rejection sensitivity &amp; anxiety</span>
+            </div>
+          </article>
+
+          <!-- Card 2: THE DEADLINE -->
+          <article class="signal-card signal-card-deadline">
+            <div class="card-top">
+              <span class="card-num-tag">02 // TIMELINE &amp; TIMEFRAME</span>
+              <span class="card-badge badge-deadline" id="badge-deadline">THE DEADLINE</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Target Date or Window</h3>
+              <p class="card-distilled-text" id="text-deadline">
+                "End of Day Friday (5:00 PM EST)"
+              </p>
+            </div>
+            <div class="card-bottom">
+              <span class="card-tip">⏰ Isolates the hard clock from atmospheric noise</span>
+            </div>
+          </article>
+
+          <!-- Card 3: THE ACTION ITEM -->
+          <article class="signal-card signal-card-action">
+            <div class="card-top">
+              <span class="card-num-tag">03 // SINGLE NEXT STEP</span>
+              <span class="card-badge badge-action" id="badge-action">THE ACTION ITEM</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Single Imperative Task</h3>
+              <div class="action-highlight-box">
+                <span class="action-bullet-symbol">➔</span>
+                <p class="card-distilled-text action-text" id="text-action">
+                  "Review the attached pitch deck and write 3 bullet points of feedback."
+                </p>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button class="neo-btn neo-btn-action" id="btn-copy-action">
+                📋 COPY ACTION ITEM
+              </button>
+              <button class="neo-btn neo-btn-success" id="btn-mark-done">
+                🎯 PARALYSIS AVERTED!
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Anti-Paralysis Mini Checklist Tray -->
+        <div class="action-companion-tray">
+          <div class="companion-left">
+            <span class="companion-icon">🧠</span>
+            <div class="companion-text">
+              <strong>ADHD Focus Hack:</strong> Don't re-read the original message. Copy the green action item above into your task list or reply directly with that one step completed.
+            </div>
+          </div>
+          <div class="companion-right">
+            <span class="status-pill status-pill-success">
+              ✓ PRIVACY VERIFIED: 0 PACKETS TRANSMITTED
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Manifesto & PRD Modal -->
+    <div class="modal-backdrop" id="modal-manifesto" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-manifesto-title">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-header-left">
+            <span class="modal-tag">OPEN SOURCE ARCHITECTURE</span>
+            <h2 class="modal-title" id="modal-manifesto-title">Focus Friend // Hacktoberfest PRD</h2>
+          </div>
+          <button class="modal-close-btn" id="btn-close-modal" aria-label="Close modal">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-grid">
+            <div class="modal-column">
+              <h3>🎯 Target Friend: Alex</h3>
+              <p>Alex experiences severe <strong>Task Paralysis</strong> from 50+ Slack messages and rambling emails daily. The cognitive friction of separating emotional fluff from real deliverables leads to avoided notifications and forgotten tasks.</p>
+
+              <h3>⚡ The Three Pillars</h3>
+              <ul>
+                <li><strong>The Vibe:</strong> Eliminates rejection sensitivity by spelling out the emotional context plainly.</li>
+                <li><strong>The Deadline:</strong> Extracts the actual target date so calendars aren't missed.</li>
+                <li><strong>The Action Item:</strong> One single imperative bullet point that tells the brain exactly what to do first.</li>
+              </ul>
+            </div>
+
+            <div class="modal-column">
+              <h3>🔒 Local-First Open Source Stack</h3>
+              <ul>
+                <li><strong>Model:</strong> <code>Phi-3-mini-4k-instruct</code> (Microsoft Open Weights, 2.3GB).</li>
+                <li><strong>Engine:</strong> <code>Ollama</code> running locally at <code>localhost:11434</code>.</li>
+                <li><strong>Zero Telemetry:</strong> 0% of emails or chat logs ever leave the local machine. Works completely offline.</li>
+                <li><strong>Design System:</strong> Aesthetic Neo-Brutalism for maximum high-contrast clarity and zero distracting clutter.</li>
+              </ul>
+
+              <h3>⌨️ Keyboard Shortcuts</h3>
+              <table class="shortcuts-table">
+                <tr><th>Shortcut</th><th>Action</th></tr>
+                <tr><td><code>Ctrl + Enter</code></td><td>Extract Signal</td></tr>
+                <tr><td><code>Esc</code></td><td>Clear input buffer</td></tr>
+                <tr><td><code>Ctrl + Shift + C</code></td><td>Copy distilled action item</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <span class="modal-footer-note">Built with open-source love for Hacktoberfest 2026.</span>
+          <button class="neo-btn neo-btn-primary" id="btn-close-modal-bottom">GOT IT, LET'S WORK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span class="toast-icon">📋</span>
+      <span class="toast-message" id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-left">
+        <span>FOCUS FRIEND v1.0 • OPEN-SOURCE EXECUTIVE ASSISTANT</span>
+        <span class="footer-dot">•</span>
+        <span>LICENSED UNDER MIT</span>
+      </div>
+      <div class="footer-right">
+        <span>HACKTOBERFEST "BUILD FOR A FRIEND" CHALLENGE</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modular Frontend Entrypoint -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

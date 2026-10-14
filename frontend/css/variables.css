@@ -1,0 +1,72 @@
+/* ==========================================================================
+   FOCUS FRIEND — NEO-BRUTALIST DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* Core Palette (Neo-Brutalist Light) */
+  --bg-canvas: #FAF7EE;
+  --bg-subtle: #F0ECE1;
+  --card-bg: #FFFFFF;
+  --text-main: #121212;
+  --text-muted: #4B5563;
+  --border-color: #121212;
+  --border-thick: 3px solid var(--border-color);
+  --border-heavy: 4px solid var(--border-color);
+  --border-radius: 0px;
+
+  /* Shadows (Zero blur, hard geometric offsets) */
+  --shadow-sm: 3px 3px 0px var(--border-color);
+  --shadow-md: 5px 5px 0px var(--border-color);
+  --shadow-lg: 7px 7px 0px var(--border-color);
+  --shadow-xl: 9px 9px 0px var(--border-color);
+  --shadow-active: 1px 1px 0px var(--border-color);
+
+  /* Neo-Brutalist Color Accents */
+  --color-yellow: #FFE600;
+  --color-cyan: #38BDF8;
+  --color-coral: #FF6B6B;
+  --color-lime: #A3E635;
+  --color-purple: #C084FC;
+  --color-dark: #121212;
+  --color-white: #FFFFFF;
+
+  /* Card Accents */
+  --vibe-bg: #E0F2FE;
+  --vibe-border: #0284C7;
+  --deadline-bg: #FFE4E6;
+  --deadline-border: #E11D48;
+  --action-bg: #ECFDF5;
+  --action-border: #059669;
+
+  /* Typography */
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --transition-fast: 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Cyber-Brutalist Dark Mode */
+[data-theme="dark"] {
+  --bg-canvas: #121316;
+  --bg-subtle: #18191E;
+  --card-bg: #1B1D22;
+  --text-main: #F3F4F6;
+  --text-muted: #9CA3AF;
+  --border-color: #000000;
+  --border-thick: 3px solid #27282F;
+  --border-heavy: 4px solid #27282F;
+
+  --shadow-sm: 3px 3px 0px #000000;
+  --shadow-md: 5px 5px 0px #000000;
+  --shadow-lg: 7px 7px 0px #000000;
+  --shadow-xl: 9px 9px 0px #000000;
+  --shadow-active: 1px 1px 0px #000000;
+
+  --vibe-bg: #0C2A44;
+  --vibe-border: #38BDF8;
+  --deadline-bg: #3F121C;
+  --deadline-border: #FB7185;
+  --action-bg: #0B3322;
+  --action-border: #4ADE80;
+}
