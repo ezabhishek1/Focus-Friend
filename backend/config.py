@@ -7,7 +7,14 @@ Reads configuration from .env file or environment variables with resilient defau
 from pathlib import Path
 from typing import List, Any
 from pydantic import Field, field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+
+try:
+    from pydantic_settings import BaseSettings, SettingsConfigDict
+except ImportError:
+    from pydantic import BaseModel
+    class BaseSettings(BaseModel):
+        pass
+    SettingsConfigDict = dict
 
 # Base Directory Resolution
 BASE_DIR: Path = Path(__file__).resolve().parent.parent
@@ -95,7 +102,7 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore"
-    )
+    ) if SettingsConfigDict else {}
 
 
 # Global Settings Singleton
